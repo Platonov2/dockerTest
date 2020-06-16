@@ -77,6 +77,9 @@ $config = [
         'websocket' => [
             'class' => app\modules\websocket\Module::class,
         ],
+        'telemetry' => [
+            'class' => app\modules\telemetry\Module::class,
+        ],
     ]
 ];
 

@@ -49,7 +49,7 @@ class WsController extends Controller
             ];
         
             $router = new Router;
-            $router->addRoute('GET', '/broadcast', $this->ws);
+            $router->addRoute('GET', '/', $this->ws);
         
             $logHandler = new StreamHandler(getStdout());
             $logHandler->setFormatter(new ConsoleFormatter);
