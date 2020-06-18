@@ -14,6 +14,11 @@ class TelemetryController extends ActiveController
         parent::init();
     }
 
+    /**
+     * Получение всего списка метрик телеметрии через api
+     * @api {get}
+     * @return \yii\data\ActiveDataProvider
+     */
     public function actionIndex ()
     {
         $dataProvider = new \yii\data\ActiveDataProvider([
@@ -23,6 +28,11 @@ class TelemetryController extends ActiveController
         return $dataProvider;
     }
 
+    /**
+     * Добавление новой записи телеметрии через api
+     * @api {post}
+     * @return Telemetry
+     */
     public function actionAdd(){
         $telemetry = new Telemetry();
         $telemetry->data = Yii::$app->request->post('data');

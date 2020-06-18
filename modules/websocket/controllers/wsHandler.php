@@ -15,6 +15,10 @@ use Amp\Websocket\Server\Endpoint;
 use function Amp\call;
 use app\models\Telemetry;
 
+/**
+ * Class WsHandler
+ * @package app\modules\websocket\controllers
+ */
 class WsHandler implements ClientHandler
 {
 
@@ -34,6 +38,10 @@ class WsHandler implements ClientHandler
         return new Success($response);
     }
 
+    /**
+     * Обработка запросов на websocket
+     * @return Promise
+     */
     public function handleClient(Endpoint $endpoint, Client $client, Request $request, Response $response): Promise
     {
         return call(function () use ($endpoint, $client): \Generator {

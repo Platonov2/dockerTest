@@ -27,13 +27,11 @@ use function Amp\call;
 
 
 /**
- * Обработка WS
+ * Обработка websocket'а
  */
 class WsController extends Controller
 {
-    /**
-     * @var Websocket
-     */
+
     public $ws;
 
     public  function  init()
@@ -42,6 +40,9 @@ class WsController extends Controller
         $this -> ws = new Websocket(new wsHandler());
     }
 
+    /**
+     *  Action для "поднятия" websocket'а
+     */
     public function actionRun(){
         Loop::run(function (): Promise {
             $sockets = [
