@@ -51,6 +51,7 @@ Run the installation triggers (creating cookie validation code)
     docker-compose up -d
     
 Запуск websocket'а
+
     docker-compose exec php bash
     ./yii /websocket/ws/run
 
@@ -61,12 +62,17 @@ Run the installation triggers (creating cookie validation code)
 ### Реолизованные возможности
 
 Добавление записей телеметрии:
+
 rest api : http://localhost:8500/api/telemetry/add. Отправка json вида {"data" : "Значение телеметрии"} через метод post;
+
 websocket: http://localhost:8500/websocket/add/;
     
+
+
 Просмотр записей телеметрии:
 
 rest api     : http://localhost:8500/api/telemetry/.   Получение всего списка данных телеметрии.
 
 rest api     : http://localhost:8500/api/telemetry/id. Получение информации по записи с id = Интересующий номер.
+
 Веб-интерфейс: http://localhost:8500/telemetry/show/.  Вывод всего списка данных телеметрии. 
