@@ -8,7 +8,7 @@ use yii\web\Controller;
 
 class AddController extends Controller
 {
-    public function actionShow(){
+    public function actionIndex(){
 
         return $this->render('addTelemetry');
     }

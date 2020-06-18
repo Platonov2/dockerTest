@@ -13,6 +13,7 @@ use Amp\Websocket\Message;
 use Amp\Websocket\Server\ClientHandler;
 use Amp\Websocket\Server\Endpoint;
 use function Amp\call;
+use app\models\Telemetry;
 
 class WsHandler implements ClientHandler
 {
@@ -37,12 +38,11 @@ class WsHandler implements ClientHandler
     {
         return call(function () use ($endpoint, $client): \Generator {
             while ($message = yield $client->receive()) {
-                \assert($message instanceof Message);
-                $endpoint->broadcast(\sprintf(
-                    '%d: %s',
-                    $client->getId(),
-                    yield $message->buffer()
-                ));
+                assert($message instanceof Message);
+                $telemetry = new Telemetry();
+                $telemetry->id = null;
+                $telemetry->data = yield $message->buffer();
+                $telemetry->save(false);
             }
         });
     }

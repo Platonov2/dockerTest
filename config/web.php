@@ -56,7 +56,6 @@ $config = [
 
         'urlManager' => [
             'enablePrettyUrl' => true,
-            'enableStrictParsing' => true,
             'showScriptName' => false,
             'rules' => [
                 [
@@ -78,9 +77,10 @@ $config = [
             'class' => app\modules\websocket\Module::class,
         ],
         'telemetry' => [
+            'basePath' => '@app/modules/telemetry',
             'class' => app\modules\telemetry\Module::class,
         ],
-    ]
+    ],
 ];
 
 if (YII_ENV_DEV) {

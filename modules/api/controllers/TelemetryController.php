@@ -2,6 +2,8 @@
 namespace app\modules\api\controllers;
 
 use yii\rest\ActiveController;
+use app\models\Telemetry;
+use Yii;
 
 class TelemetryController extends ActiveController
 {
@@ -19,5 +21,16 @@ class TelemetryController extends ActiveController
         ]);
 
         return $dataProvider;
+    }
+
+    public function actionAdd(){
+        $telemetry = new Telemetry();
+        $telemetry->data = Yii::$app->request->post('data');
+
+        if($telemetry->save()){
+            Yii::$app->response->setStatusCode(201);
+        }
+
+        return $telemetry;
     }
 }
