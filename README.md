@@ -65,7 +65,7 @@ Run the installation triggers (creating cookie validation code)
 
 rest api : http://localhost:8500/api/telemetry/add. Отправка json вида {"data" : "Значение телеметрии"} через метод post;
 
-websocket: http://localhost:8500/websocket/add/;
+websocket: http://localhost:8500/websocket/ws-telemetry/add;
     
 
 
@@ -76,3 +76,5 @@ rest api     : http://localhost:8500/api/telemetry/.   Получение все
 rest api     : http://localhost:8500/api/telemetry/id. Получение информации по записи с id = Интересующий номер.
 
 Веб-интерфейс: http://localhost:8500/telemetry/show/.  Вывод всего списка данных телеметрии. 
+
+websocket: http://localhost:8500/websocket/ws-telemetry/get.  Вывод всего списка данных телеметрии. 
