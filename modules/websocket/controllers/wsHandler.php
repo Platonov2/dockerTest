@@ -23,9 +23,7 @@ class WsHandler implements ClientHandler
 {
 
     private const ALLOWED_ORIGINS = [
-        'http://localhost:1337',
         'http://localhost:8500',
-        'http://0.0.0.0:1337',
     ];
 
     public function handleHandshake(Endpoint $endpoint, Request $request, Response $response): Promise
@@ -46,11 +44,25 @@ class WsHandler implements ClientHandler
     {
         return call(function () use ($endpoint, $client): \Generator {
             while ($message = yield $client->receive()) {
-                assert($message instanceof Message);
-                $telemetry = new Telemetry();
-                $telemetry->id = null;
-                $telemetry->data = yield $message->buffer();
-                $telemetry->save(false);
+                $msg = yield $message->buffer();
+                $data = json_decode($msg, true);
+
+                switch ($data['action']){
+                    case 'Add' :
+                        $telemetry = new Telemetry();
+                        $telemetry->id = null;
+                        $telemetry->data = $data['data'];
+                        $telemetry->save(false);
+
+                        break;
+                    case 'Get':
+                        $telemetry = Telemetry::findOne($data['id']);
+                        $client->send(json_encode(['result' => 'ok', 'data' => $telemetry->data]));
+
+                        break;
+                    default:
+                        continue;
+                }
             }
         });
     }

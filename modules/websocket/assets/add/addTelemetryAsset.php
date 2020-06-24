@@ -1,6 +1,6 @@
 <?php
 
-namespace app\modules\websocket\assets;
+namespace app\modules\websocket\assets\add;
 
 use yii\web\AssetBundle;
 
@@ -9,7 +9,7 @@ use yii\web\AssetBundle;
  */
 class addTelemetryAsset extends AssetBundle
 {
-    public $sourcePath = '@app/modules/websocket/assets/';
+    public $sourcePath = '@app/modules/websocket/assets/add';
     public $js = [
         'addTelemetry19.js'
     ];

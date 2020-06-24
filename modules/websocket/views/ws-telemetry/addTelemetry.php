@@ -1,6 +1,6 @@
 <?php
 
-use app\modules\websocket\assets\addTelemetryAsset;
+use app\modules\websocket\assets\add\addTelemetryAsset;
 addTelemetryAsset::register($this);
 ?>
 
